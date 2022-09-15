@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stan - Reference Manual &#8212; My Jupyter Book</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Stan" href="cover.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cover.html">
+   Stan
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Stan -  Reference Manual
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/stan__quick_references.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/stan__quick_references.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Stan -  Reference Manual
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comments-char">
+   1. Comments Char
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#includes">
+   2. Includes
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comments">
+   3. Comments
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#whitespace">
+   4. Whitespace
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-type-and-declarations">
+   5. Data Type and Declarations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overview-of-data-type">
+     5.1 Overview of data type
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#primitive-numerical-data-type">
+     5.2 Primitive numerical data type
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#complex-numerical-data-type">
+     5.3 Complex numerical data type
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">stan</span>
+
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-darkgrid&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rodar esse comando antes de import a stan (pystan versão 3.x)</span>
+<span class="kn">import</span> <span class="nn">nest_asyncio</span>
+<span class="n">nest_asyncio</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data generating data</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">70</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">data1</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Essa estrutura está definida na página 77 - SR2</span>
+
+<span class="n">model_data1</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot; </span>
+<span class="s2">    // Dado é a variável que foi medida!</span>
+<span class="s2">    data {   </span>
+<span class="s2">        int N;</span>
+<span class="s2">        real y[N];</span>
+<span class="s2">    }</span>
+<span class="s2">    </span>
+<span class="s2">    // Parâmetro é a váriável não observada.</span>
+<span class="s2">    parameters {  </span>
+<span class="s2">        real mu;</span>
+<span class="s2">        real&lt;lower=0&gt; sigma;</span>
+<span class="s2">    }</span>
+<span class="s2">    </span>
+<span class="s2">    model {</span>
+<span class="s2">        mu ~ normal(60, 10);</span>
+<span class="s2">        sigma ~ exponential(1);</span>
+<span class="s2">        </span>
+<span class="s2">        y ~ normal(mu, sigma);</span>
+<span class="s2">    }</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">stan_data1</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">data1</span><span class="p">),</span>
+    <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">data1</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">posteriori</span> <span class="o">=</span> <span class="n">stan</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">model_data1</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">stan_data1</span><span class="p">)</span>
+<span class="n">results_data1</span> <span class="o">=</span> <span class="n">posteriori</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">num_chains</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_data1_mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">results_data1</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">])</span>
+<span class="n">results_data1_sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">results_data1</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inference of mu: &#39;</span> <span class="p">,</span> <span class="n">results_data1_mu</span><span class="p">,</span> <span class="s1">&#39; - Real value: &#39;</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inference of sigma: &#39;</span><span class="p">,</span> <span class="n">results_data1_sigma</span><span class="p">,</span> <span class="s1">&#39; - Real value: &#39;</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">results_data1</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Posteriori&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inference of mu:  70.28212079041822  - Real value:  70
+Inference of sigma:  95.14987269246436  - Real value:  100
+</pre></div>
+</div>
+<img alt="_images/stan__quick_references_4_1.png" src="_images/stan__quick_references_4_1.png" />
+</div>
+</div>
+<div class="section" id="stan-reference-manual">
+<h1>Stan -  Reference Manual<a class="headerlink" href="#stan-reference-manual" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="comments-char">
+<h1>1. Comments Char<a class="headerlink" href="#comments-char" title="Permalink to this headline">¶</a></h1>
+<p>Comments line: <code class="docutils literal notranslate"><span class="pre">//</span></code> or <code class="docutils literal notranslate"><span class="pre">#</span></code></p>
+<p>Comments in block: <code class="docutils literal notranslate"><span class="pre">/*</span> <span class="pre">...</span> <span class="pre">*/</span></code></p>
+</div>
+<div class="section" id="includes">
+<h1>2. Includes<a class="headerlink" href="#includes" title="Permalink to this headline">¶</a></h1>
+<p>Use <code class="docutils literal notranslate"><span class="pre">#include</span></code> to import stan file in another file.
+For example, the <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">my-stan-file-function.stan</span></code> on top of file this will be replaced by content in <code class="docutils literal notranslate"><span class="pre">my-stan-file-function.stan</span></code>.</p>
+</div>
+<div class="section" id="comments">
+<h1>3. Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h1>
+<p>Example:</p>
+<div class="highlight-data notranslate"><div class="highlight"><pre><span></span>  int&lt;lower=0&gt; N;  // number of observations
+  array[N] real y;  // observations
+}```
+</pre></div>
+</div>
+</div>
+<div class="section" id="whitespace">
+<h1>4. Whitespace<a class="headerlink" href="#whitespace" title="Permalink to this headline">¶</a></h1>
+<p>No indentation is need!</p>
+</div>
+<div class="section" id="data-type-and-declarations">
+<h1>5. Data Type and Declarations<a class="headerlink" href="#data-type-and-declarations" title="Permalink to this headline">¶</a></h1>
+<p>All variables should be declared in data type, like c\c++.</p>
+<p>Stan is strong and static typing:</p>
+<ol class="simple">
+<li><p>Force the programmer’s declarate a variable.</p></li>
+<li><p>Checking erros in compile time and flags erros.</p></li>
+<li><p>Don’t propagate errors ever to the results.</p></li>
+</ol>
+<div class="section" id="overview-of-data-type">
+<h2>5.1 Overview of data type<a class="headerlink" href="#overview-of-data-type" title="Permalink to this headline">¶</a></h2>
+<p><strong>Two primitive data type</strong>: <code class="docutils literal notranslate"><span class="pre">real</span></code> and <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<p><strong>Complex type</strong>: <code class="docutils literal notranslate"><span class="pre">complex</span></code>, there is a complex number, real and imaginary component, both is <code class="docutils literal notranslate"><span class="pre">real</span></code>.</p>
+<p><strong>Vector and Matrix type:</strong>:  <code class="docutils literal notranslate"><span class="pre">vector</span></code> to column vector, <code class="docutils literal notranslate"><span class="pre">row_vector</span></code> to row vectors, and <code class="docutils literal notranslate"><span class="pre">matrix</span></code>. (To complex type, <code class="docutils literal notranslate"><span class="pre">complex_vector</span></code>, <code class="docutils literal notranslate"><span class="pre">complex_row_vector</span></code> and <code class="docutils literal notranslate"><span class="pre">complex_matrix</span></code>)</p>
+<p><strong>Array types</strong>: Any type can be made into an array type:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">array[5]</span> <span class="pre">real</span> <span class="pre">a;</span></code> Array, labeled <code class="docutils literal notranslate"><span class="pre">a</span></code>, that have 5 postions with real type;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">array[10,</span> <span class="pre">2]</span> <span class="pre">int</span> <span class="pre">b;</span></code> Array with 10 lines and 2 columns of the int type, called <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">array[10,</span> <span class="pre">10,</span> <span class="pre">5]</span> <span class="pre">matrix[3,</span> <span class="pre">3]</span> <span class="pre">c;</span></code> Array with <span class="math notranslate nohighlight">\([10, 10 , 5]\)</span> positions to matrix<span class="math notranslate nohighlight">\([3,3]\)</span> format, called <code class="docutils literal notranslate"><span class="pre">c</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">array[12,</span> <span class="pre">8,</span> <span class="pre">15]</span> <span class="pre">complex</span> <span class="pre">z;</span></code> Declare a array of the complex type.</p></li>
+</ul>
+<p><strong>Constrained data type</strong>: This variables are parameters, is helpful provided them  with constraints to aid internal check erros.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int&lt;lower=0&gt;</span> <span class="pre">N;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">real&lt;upper=0&gt;</span> <span class="pre">log_p;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vector&lt;lower=-1,</span> <span class="pre">upper=1&gt;[3]</span> <span class="pre">rho;</span></code></p></li>
+</ul>
+<p>There are <span class="math notranslate nohighlight">\(4\)</span> constrained vector data type:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">simplex</span></code> to simple units.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unit-vector</span></code> to arrays[ ] - unit-length vector.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ordered</span></code> to ordered vectors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">positive_ordered</span></code> to ordered positive vectors</p></li>
+</ol>
+<p>And there are constrained to matrix data type:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">corr_matrix</span></code> for correlations matrices (<em>symmetric, positive definite, unit diagonal</em>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cov_matrix</span></code> for covariance matrices (<em>symmetric, positive definite</em>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cholesky_factor_cov</span></code> is the Cholesky factors of covariance matrices(<em>lower triangular, positive diagonal, product with own transpose is a covariance matrix</em>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cholesky_factor_corr</span></code> is the Cholesky factors of correlations matrices (<em>lower triangular, positive diagonal, unit-length rows</em>)</p></li>
+</ol>
+<p>It’s constrains will help check erros only in variables defined in the <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">transformed</span> <span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">transformed</span> <span class="pre">parameters</span></code>, <code class="docutils literal notranslate"><span class="pre">generate</span> <span class="pre">quantities</span></code> blocks.</p>
+<p>Unconstrained variable will be declared as real type (<span class="math notranslate nohighlight">\({\rm I\!R}^n\)</span>) by default.</p>
+</div>
+<div class="section" id="primitive-numerical-data-type">
+<h2>5.2 Primitive numerical data type<a class="headerlink" href="#primitive-numerical-data-type" title="Permalink to this headline">¶</a></h2>
+<p><strong>Integer Precision</strong>: 32-bits (4-bytes) {<span class="math notranslate nohighlight">\(-2^{31}\)</span>, <span class="math notranslate nohighlight">\(2^{31} - 1\)</span>}</p>
+<p><strong>Real Precision</strong>: 64-bits (8-bytes), slightly larger than <span class="math notranslate nohighlight">\(+/- 10^{307} \)</span>, with until 15 decimal digits of accuracy.</p>
+<p><strong>Not-a-number</strong>: returns not-a-number functions errors if argument is not-a-number. And comparison operators: <code class="docutils literal notranslate"><span class="pre">not-a-number</span></code> == true, is <em>false</em> for every cases.</p>
+<p><strong>Infinite values</strong>: Great than all numbers, equivalent to negative case.</p>
+</div>
+<div class="section" id="complex-numerical-data-type">
+<h2>5.3 Complex numerical data type<a class="headerlink" href="#complex-numerical-data-type" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://mc-stan.org/docs/reference-manual/complex-numerical-data-type.html">https://mc-stan.org/docs/reference-manual/complex-numerical-data-type.html</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="cover.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Stan</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

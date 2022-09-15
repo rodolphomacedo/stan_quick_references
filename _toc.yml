@@ -1,0 +1,4 @@
+format: jb-book
+root: cover
+chapters:
+- file: stan__quick_references 
