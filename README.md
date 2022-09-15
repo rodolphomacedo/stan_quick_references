@@ -1,2 +1,2 @@
-# stan_quick_references
+# Stan
 Stan quick references
