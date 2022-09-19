@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# $\mathcal{P}$
+
 # In[1]:
 
 
@@ -193,4 +195,123 @@ plt.show()
 
 # #### 5.3 Complex numerical data type
 
-# https://mc-stan.org/docs/reference-manual/complex-numerical-data-type.html
+# - `complex z = 2 - 1.3i;`
+# 
+# - `real re = get_real(z);  // re has value 2.0`
+# 
+# - `real im = get_imag(z);  // im has value -1.3`
+
+# Promoting real to complex:
+# 
+# - `real x = 5.0;`
+# 
+# - `complex z = x;  // get_real(z) == 5.0, get_imag(z) == 0`
+
+# #### 5.4 Scalar datatype and variable declarations
+
+# - `int N;`  Unconstrained
+# 
+# -  `int<lower=1> N;`  $N >= 1, \forall$ $N$ in $\mathbb{Z} $
+# 
+# - `int<lower=0, upper=1> cond;`  $\{0, 1\}$ 
+
+# - `real<lower=0> sigma;` $\sigma >=0 $
+
+# - `real<upper=-1> x;` $x <= -1$
+
+# - `real<lower=-1, upper=1> rho;` $-1 <= \rho <= 1$
+
+# - `positive_infinity()` and `negative_infinty()` could be use to set limits, but this values are ignored in Stan.
+
+# **Affinely transformed real**: The transformation:
+# $$x ↦ \mu + \sigma * x$$
+# 
+# - $\mu$: Offset
+# 
+# - $\sigma$: Multiplier (positive)
+# 
+# Like constraint declarations, making the sampling process more efficient. Like a soft constraint:
+# 
+# 
+# - `real<offset=1> x;`   $1 + 1 \times x$
+# 
+# - `real<multiplier=2>;`   $0 + 2\times x$
+# 
+# - `real<offset=1, multiplier=2> x;`   $1 + 2\times x$
+# 
+
+# Example:
+# 
+# ```
+# parameters {
+#   real<offset=mu, multiplier=sigma> x;
+# }
+# model {
+#   x ~ normal(mu, sigma);
+# }
+# 
+# ```
+
+# The theorical model that received the data from $x ~ normal(0, 1)$, can writer in stan model like:
+# 
+# ```
+# parameter {
+#     real x;  // This x ~ normal(0, 1)
+# }
+# 
+# model {
+#     x ~ normal(mu, sigma);
+# }
+# ```
+# 
+# this code is equivalent to:
+# 
+# ```
+# parameter {
+#     real<offset=0, multiplier=1> x;  // This x ~ normal(0, 1)
+# }
+# model {
+#     x ~ normal(mu, sigma);
+# }
+# ```
+
+# **Expressions as bounds and offset/multiplier**: We can use the variables, that have been declared before, to setting the values of the offset and multiplier.
+# 
+# ```
+# data {
+#     real lb;
+# }
+#  
+# parameters {
+#     rea<lower=lb> phi;
+# }
+# ```
+
+# Variables used in constraints can be any variable that has been defined at the point the constraint is used. For instance:
+# 
+# ```
+# data {
+#    int<lower=1> N;
+#    array[N] real y;
+# }
+# parameters {
+#    real<lower=min(y), upper=max(y)> phi;
+# }
+# ```
+
+# **Declaring optional variable**: Variable that depends on a boolean constant.
+# 
+# ```
+# data {
+#     int<lower=0, upper=1> include_alpha;   // Only {0, 1}
+# }
+# parameters {
+#     vector[include_alpha ? N : 0] alpha;
+# }
+# ```
+# 
+# If `include_alpha == True` then `alpha` vector exists, else  it will be exclude in output results automaticaly.
+
+# #### 5.5 Vector and matrix data types
+
+# Three types of container objects: `arrays`, `vector` and `matrix`. Vector and matrices are structure limited, vector 1-dimensional real or complex values. Matrix that two dimensional. Array is not matrix.
