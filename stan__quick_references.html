@@ -231,6 +231,16 @@
      5.3 Complex numerical data type
     </a>
    </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scalar-datatype-and-variable-declarations">
+     5.4 Scalar datatype and variable declarations
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vector-and-matrix-data-types">
+     5.5 Vector and matrix data types
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -244,7 +254,8 @@
         
               <div>
                 
-  <div class="cell docutils container">
+  <p><span class="math notranslate nohighlight">\(\mathcal{P}\)</span></p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -331,11 +342,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inference of mu:  70.28212079041822  - Real value:  70
-Inference of sigma:  95.14987269246436  - Real value:  100
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inference of mu:  69.51944633163701  - Real value:  70
+Inference of sigma:  94.70713134327357  - Real value:  100
 </pre></div>
 </div>
-<img alt="_images/stan__quick_references_4_1.png" src="_images/stan__quick_references_4_1.png" />
+<img alt="_images/stan__quick_references_5_1.png" src="_images/stan__quick_references_5_1.png" />
 </div>
 </div>
 <div class="section" id="stan-reference-manual">
@@ -417,7 +428,111 @@ For example, the <code class="docutils literal notranslate"><span class="pre">#i
 </div>
 <div class="section" id="complex-numerical-data-type">
 <h2>5.3 Complex numerical data type<a class="headerlink" href="#complex-numerical-data-type" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://mc-stan.org/docs/reference-manual/complex-numerical-data-type.html">https://mc-stan.org/docs/reference-manual/complex-numerical-data-type.html</a></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">complex</span> <span class="pre">z</span> <span class="pre">=</span> <span class="pre">2</span> <span class="pre">-</span> <span class="pre">1.3i;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">real</span> <span class="pre">re</span> <span class="pre">=</span> <span class="pre">get_real(z);</span>&#160; <span class="pre">//</span> <span class="pre">re</span> <span class="pre">has</span> <span class="pre">value</span> <span class="pre">2.0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">real</span> <span class="pre">im</span> <span class="pre">=</span> <span class="pre">get_imag(z);</span>&#160; <span class="pre">//</span> <span class="pre">im</span> <span class="pre">has</span> <span class="pre">value</span> <span class="pre">-1.3</span></code></p></li>
+</ul>
+<p>Promoting real to complex:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">real</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">5.0;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">complex</span> <span class="pre">z</span> <span class="pre">=</span> <span class="pre">x;</span>&#160; <span class="pre">//</span> <span class="pre">get_real(z)</span> <span class="pre">==</span> <span class="pre">5.0,</span> <span class="pre">get_imag(z)</span> <span class="pre">==</span> <span class="pre">0</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="scalar-datatype-and-variable-declarations">
+<h2>5.4 Scalar datatype and variable declarations<a class="headerlink" href="#scalar-datatype-and-variable-declarations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">N;</span></code>  Unconstrained</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int&lt;lower=1&gt;</span> <span class="pre">N;</span></code>  <span class="math notranslate nohighlight">\(N &gt;= 1, \forall\)</span> <span class="math notranslate nohighlight">\(N\)</span> in <span class="math notranslate nohighlight">\(\mathbb{Z} \)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int&lt;lower=0,</span> <span class="pre">upper=1&gt;</span> <span class="pre">cond;</span></code>  <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">real&lt;lower=0&gt;</span> <span class="pre">sigma;</span></code> <span class="math notranslate nohighlight">\(\sigma &gt;=0 \)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">real&lt;upper=-1&gt;</span> <span class="pre">x;</span></code> <span class="math notranslate nohighlight">\(x &lt;= -1\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">real&lt;lower=-1,</span> <span class="pre">upper=1&gt;</span> <span class="pre">rho;</span></code> <span class="math notranslate nohighlight">\(-1 &lt;= \rho &lt;= 1\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">positive_infinity()</span></code> and <code class="docutils literal notranslate"><span class="pre">negative_infinty()</span></code> could be use to set limits, but this values are ignored in Stan.</p></li>
+</ul>
+<p><strong>Affinely transformed real</strong>: The transformation:
+$<span class="math notranslate nohighlight">\(x ↦ \mu + \sigma * x\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mu\)</span>: Offset</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma\)</span>: Multiplier (positive)</p></li>
+</ul>
+<p>Like constraint declarations, making the sampling process more efficient. Like a soft constraint:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">real&lt;offset=1&gt;</span> <span class="pre">x;</span></code>   <span class="math notranslate nohighlight">\(1 + 1 \times x\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">real&lt;multiplier=2&gt;;</span></code>   <span class="math notranslate nohighlight">\(0 + 2\times x\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">real&lt;offset=1,</span> <span class="pre">multiplier=2&gt;</span> <span class="pre">x;</span></code>   <span class="math notranslate nohighlight">\(1 + 2\times x\)</span></p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="p">{</span>
+  <span class="n">real</span><span class="o">&lt;</span><span class="n">offset</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">multiplier</span><span class="o">=</span><span class="n">sigma</span><span class="o">&gt;</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">model</span> <span class="p">{</span>
+  <span class="n">x</span> <span class="o">~</span> <span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">);</span>
+<span class="p">}</span>
+
+</pre></div>
+</div>
+<p>The theorical model that received the data from <span class="math notranslate nohighlight">\(x ~ normal(0, 1)\)</span>, can writer in stan model like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="p">{</span>
+    <span class="n">real</span> <span class="n">x</span><span class="p">;</span>  <span class="o">//</span> <span class="n">This</span> <span class="n">x</span> <span class="o">~</span> <span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">model</span> <span class="p">{</span>
+    <span class="n">x</span> <span class="o">~</span> <span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>this code is equivalent to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="p">{</span>
+    <span class="n">real</span><span class="o">&lt;</span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">multiplier</span><span class="o">=</span><span class="mi">1</span><span class="o">&gt;</span> <span class="n">x</span><span class="p">;</span>  <span class="o">//</span> <span class="n">This</span> <span class="n">x</span> <span class="o">~</span> <span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">model</span> <span class="p">{</span>
+    <span class="n">x</span> <span class="o">~</span> <span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Expressions as bounds and offset/multiplier</strong>: We can use the variables, that have been declared before, to setting the values of the offset and multiplier.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="p">{</span>
+    <span class="n">real</span> <span class="n">lb</span><span class="p">;</span>
+<span class="p">}</span>
+ 
+<span class="n">parameters</span> <span class="p">{</span>
+    <span class="n">rea</span><span class="o">&lt;</span><span class="n">lower</span><span class="o">=</span><span class="n">lb</span><span class="o">&gt;</span> <span class="n">phi</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Variables used in constraints can be any variable that has been defined at the point the constraint is used. For instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="p">{</span>
+   <span class="nb">int</span><span class="o">&lt;</span><span class="n">lower</span><span class="o">=</span><span class="mi">1</span><span class="o">&gt;</span> <span class="n">N</span><span class="p">;</span>
+   <span class="n">array</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="n">real</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">parameters</span> <span class="p">{</span>
+   <span class="n">real</span><span class="o">&lt;</span><span class="n">lower</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">upper</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">phi</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Declaring optional variable</strong>: Variable that depends on a boolean constant.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>data {
+    int&lt;lower=0, upper=1&gt; include_alpha;   // Only {0, 1}
+}
+parameters {
+    vector[include_alpha ? N : 0] alpha;
+}
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">include_alpha</span> <span class="pre">==</span> <span class="pre">True</span></code> then <code class="docutils literal notranslate"><span class="pre">alpha</span></code> vector exists, else  it will be exclude in output results automaticaly.</p>
+</div>
+<div class="section" id="vector-and-matrix-data-types">
+<h2>5.5 Vector and matrix data types<a class="headerlink" href="#vector-and-matrix-data-types" title="Permalink to this headline">¶</a></h2>
+<p>Three types of container objects: <code class="docutils literal notranslate"><span class="pre">arrays</span></code>, <code class="docutils literal notranslate"><span class="pre">vector</span></code> and <code class="docutils literal notranslate"><span class="pre">matrix</span></code>. Vector and matrices are structure limited, vector 1-dimensional real or complex values. Matrix that two dimensional. Array is not matrix.</p>
 </div>
 </div>
 
