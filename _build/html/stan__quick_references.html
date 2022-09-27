@@ -240,6 +240,112 @@
     <a class="reference internal nav-link" href="#vector-and-matrix-data-types">
      5.5 Vector and matrix data types
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vector">
+       Vector:
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#complex-vectors">
+       Complex vectors
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#unit-vector">
+       Unit vector
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ordered-vector">
+       Ordered vector
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#positive-ordered-vector">
+       Positive, ordered vector
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#row-vectors">
+       Row vectors
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#complex-row-vectors">
+       Complex row Vectors
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matrices">
+       Matrices
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#assigning-to-rows-of-matrix">
+       Assigning to rows of matrix
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#covariance-matrices">
+       Covariance matrices
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#correlation-matrices">
+         Correlation matrices
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#cholesky-factor-of-covariance-matrices">
+         Cholesky factor of covariance matrices
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cholesky-factors-of-positive-semi-definite-matrices">
+       Cholesky factors of positive semi-definite matrices
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#cholesky-factors-of-correlation-matrices">
+         Cholesky factors of correlation matrices
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#assigning-constrained-variables">
+         Assigning constrained variables
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#expressions-as-size-declarations">
+         Expressions as size declarations
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#accessing-vector-and-matrix-elements">
+         Accessing vector and matrix elements
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#array-index-style">
+         Array index style
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#size-declaration-restrictions">
+         Size declaration restrictions
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#array-data-type">
+     5.6 Array data type
+    </a>
    </li>
   </ul>
  </li>
@@ -342,8 +448,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inference of mu:  69.34694533264366  - Real value:  70
-Inference of sigma:  96.71442871378558  - Real value:  100
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inference of mu:  69.12781475816588  - Real value:  70
+Inference of sigma:  93.03131612688256  - Real value:  100
 </pre></div>
 </div>
 <img alt="_images/stan__quick_references_5_1.png" src="_images/stan__quick_references_5_1.png" />
@@ -533,6 +639,107 @@ parameters {
 <div class="section" id="vector-and-matrix-data-types">
 <h2>5.5 Vector and matrix data types<a class="headerlink" href="#vector-and-matrix-data-types" title="Permalink to this headline">¶</a></h2>
 <p>Three types of container objects: <code class="docutils literal notranslate"><span class="pre">arrays</span></code>, <code class="docutils literal notranslate"><span class="pre">vector</span></code> and <code class="docutils literal notranslate"><span class="pre">matrix</span></code>. Vector and matrices are structure limited, vector 1-dimensional real or complex values. Matrix that two dimensional. Array is not matrix.</p>
+<div class="section" id="vector">
+<h3>Vector:<a class="headerlink" href="#vector" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">vector[3]</span> <span class="pre">u;</span></code>  3-dimensional real vector.</p>
+<p><code class="docutils literal notranslate"><span class="pre">vector&lt;lower=0&gt;[3]</span> <span class="pre">u;</span></code>  vector with non-negative values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">vector&lt;offset=42,</span> <span class="pre">multiplier=3&gt;[3]</span> <span class="pre">u;</span></code> vector with offset and multiplier</p>
+</div>
+<div class="section" id="complex-vectors">
+<h3>Complex vectors<a class="headerlink" href="#complex-vectors" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">complex_vector[3]</span> <span class="pre">v;</span></code></p>
+<p>it’s do not support any constraints</p>
+</div>
+<div class="section" id="unit-vector">
+<h3>Unit vector<a class="headerlink" href="#unit-vector" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">unit_vector[5]</span> <span class="pre">theta;</span></code> Is declared to be a unit <span class="math notranslate nohighlight">\(5-vector\)</span>. Useful to validate unit length.</p>
+</div>
+<div class="section" id="ordered-vector">
+<h3>Ordered vector<a class="headerlink" href="#ordered-vector" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ordered[5]</span> <span class="pre">c;</span></code>  All entries are sorted in ascending order. The vector often employed as cut points in oderder logistic regression models.</p>
+</div>
+<div class="section" id="positive-ordered-vector">
+<h3>Positive, ordered vector<a class="headerlink" href="#positive-ordered-vector" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">positive_ordered[5]</span> <span class="pre">d;</span></code>  Vector with positive real values and sorted ascending.</p>
+</div>
+<div class="section" id="row-vectors">
+<h3>Row vectors<a class="headerlink" href="#row-vectors" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">row_vector[1093]</span> <span class="pre">u;</span></code> It’s a 1093-dimensional row vector.</p>
+<p><code class="docutils literal notranslate"><span class="pre">row_vector&lt;lower=-1,</span> <span class="pre">upper=1&gt;[10]</span> <span class="pre">u;</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">row_vector&lt;offset=-42,</span> <span class="pre">multiplier=3&gt;[3]</span> <span class="pre">u;</span></code></p>
+</div>
+<div class="section" id="complex-row-vectors">
+<h3>Complex row Vectors<a class="headerlink" href="#complex-row-vectors" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">complex_row_vector[12]</span> <span class="pre">v;</span></code></p>
+<p>Not allow constraints.</p>
+</div>
+<div class="section" id="matrices">
+<h3>Matrices<a class="headerlink" href="#matrices" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">matrix[M,</span> <span class="pre">N]</span> <span class="pre">A;</span></code> Where <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(N\)</span> are integer type.</p>
+<p><code class="docutils literal notranslate"><span class="pre">matrix&lt;upper=0&gt;[3,</span> <span class="pre">4]</span> <span class="pre">B;</span></code> Matrix with positive values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">matrix&lt;offset=3,</span> <span class="pre">multiplier=2&gt;[4,</span> <span class="pre">3]</span> <span class="pre">C;</span></code> Matrix with offset and multiplier</p>
+<p><code class="docutils literal notranslate"><span class="pre">matrix&lt;multiplier=2&gt;[4,</span> <span class="pre">3]</span> <span class="pre">C;</span></code> Matrix with just multiplier.</p>
+</div>
+<div class="section" id="assigning-to-rows-of-matrix">
+<h3>Assigning to rows of matrix<a class="headerlink" href="#assigning-to-rows-of-matrix" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">matrix[M,</span> <span class="pre">N]</span> <span class="pre">a;</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">row_vector[N]</span> <span class="pre">b;</span></code></p>
+<p>…</p>
+<p><code class="docutils literal notranslate"><span class="pre">a[1]</span> <span class="pre">=</span> <span class="pre">b;</span></code></p>
+<p>Copies the values row vector <code class="docutils literal notranslate"><span class="pre">b</span></code> to <code class="docutils literal notranslate"><span class="pre">a[1]</span></code>, where <code class="docutils literal notranslate"><span class="pre">a[1]</span></code> is the first row of matrix <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p>
+</div>
+<div class="section" id="covariance-matrices">
+<h3>Covariance matrices<a class="headerlink" href="#covariance-matrices" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">cov_matrix[k]</span> <span class="pre">Omega;</span></code> It’s a <span class="math notranslate nohighlight">\(k \times k\)</span> covariance matrix, symmetric and positive definite.</p>
+<div class="section" id="correlation-matrices">
+<h4>Correlation matrices<a class="headerlink" href="#correlation-matrices" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">corr_matrix[3]</span> <span class="pre">Sigma;</span></code> symmetric, positive definite has entries between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span> and has a unit diagonal.</p>
+</div>
+<div class="section" id="cholesky-factor-of-covariance-matrices">
+<h4>Cholesky factor of covariance matrices<a class="headerlink" href="#cholesky-factor-of-covariance-matrices" title="Permalink to this headline">¶</a></h4>
+<p>This a better than use covariance matrix directly.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cholesky_factor_cov[4]</span> <span class="pre">L;</span></code> Where <span class="math notranslate nohighlight">\(\Sigma = LL^{T}\)</span> and <span class="math notranslate nohighlight">\(\Sigma\)</span> is a covariance matrix.</p>
+</div>
+</div>
+<div class="section" id="cholesky-factors-of-positive-semi-definite-matrices">
+<h3>Cholesky factors of positive semi-definite matrices<a class="headerlink" href="#cholesky-factors-of-positive-semi-definite-matrices" title="Permalink to this headline">¶</a></h3>
+<p>We also use the general declarations to cholesky factor.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cholesky_factor_cov[M,</span> <span class="pre">N];</span></code> To be a positive semi-definite matrices of rank M.</p>
+<div class="section" id="cholesky-factors-of-correlation-matrices">
+<h4>Cholesky factors of correlation matrices<a class="headerlink" href="#cholesky-factors-of-correlation-matrices" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">cholesky_factor_corr[k]</span> <span class="pre">L;</span></code>  Represent Cholesky factor of a correlation matrix.</p>
+</div>
+<div class="section" id="assigning-constrained-variables">
+<h4>Assigning constrained variables<a class="headerlink" href="#assigning-constrained-variables" title="Permalink to this headline">¶</a></h4>
+<p>Constrained are not block to assigning between variable with same primitive data.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">real</span></code> with <code class="docutils literal notranslate"><span class="pre">real&lt;lower=0,</span> <span class="pre">upper=1&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matrix[3,3]</span></code> with <code class="docutils literal notranslate"><span class="pre">cov_matrix[3]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matrix[3,3]</span></code> with <code class="docutils literal notranslate"><span class="pre">cholesky_factor_cov[3]</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="expressions-as-size-declarations">
+<h4>Expressions as size declarations<a class="headerlink" href="#expressions-as-size-declarations" title="Permalink to this headline">¶</a></h4>
+<p>Declare once the data and using in other blocks.</p>
+<p><code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">{</span>&#160;&#160;&#160;&#160; <span class="pre">int&lt;lower=0&gt;</span> <span class="pre">N_observed,</span> <span class="pre">N_missing;</span> <span class="pre">}</span> <span class="pre">transformed</span> <span class="pre">parameters</span> <span class="pre">{</span>&#160;&#160;&#160;&#160; <span class="pre">vector[N_observed</span> <span class="pre">+</span> <span class="pre">N_missing]</span> <span class="pre">y;</span> <span class="pre">}</span></code></p>
+</div>
+<div class="section" id="accessing-vector-and-matrix-elements">
+<h4>Accessing vector and matrix elements<a class="headerlink" href="#accessing-vector-and-matrix-elements" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">matrix[M,</span> <span class="pre">N]</span> <span class="pre">m;</span> <span class="pre">row_vector[N]</span> <span class="pre">v;</span> <span class="pre">real</span> <span class="pre">x;</span> <span class="pre">//...</span> <span class="pre">v</span> <span class="pre">=</span> <span class="pre">m[2];</span>&#160; <span class="pre">//</span> <span class="pre">m[2]</span> <span class="pre">is</span> <span class="pre">row_vector</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">v[3];</span>&#160; <span class="pre">//</span> <span class="pre">equivalent</span> <span class="pre">to</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">m[2][3]</span> <span class="pre">or</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">m[2,</span> <span class="pre">3]</span></code></p>
+</div>
+<div class="section" id="array-index-style">
+<h4>Array index style<a class="headerlink" href="#array-index-style" title="Permalink to this headline">¶</a></h4>
+<p>The more efficient form to access array is by <code class="docutils literal notranslate"><span class="pre">m[2,</span> <span class="pre">3]</span></code>.</p>
+</div>
+<div class="section" id="size-declaration-restrictions">
+<h4>Size declaration restrictions<a class="headerlink" href="#size-declaration-restrictions" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">vector[M</span> <span class="pre">+</span> <span class="pre">N]</span> <span class="pre">y;</span></code>  Also to matrices and arrays.</p>
+</div>
+</div>
+</div>
+<div class="section" id="array-data-type">
+<h2>5.6 Array data type<a class="headerlink" href="#array-data-type" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://mc-stan.org/docs/reference-manual/array-data-types.html">https://mc-stan.org/docs/reference-manual/array-data-types.html</a></p>
 </div>
 </div>
 

@@ -315,3 +315,139 @@ plt.show()
 # #### 5.5 Vector and matrix data types
 
 # Three types of container objects: `arrays`, `vector` and `matrix`. Vector and matrices are structure limited, vector 1-dimensional real or complex values. Matrix that two dimensional. Array is not matrix.
+
+# ######  Vector:
+# 
+# `vector[3] u;`  3-dimensional real vector.
+# 
+# `vector<lower=0>[3] u;`  vector with non-negative values.
+# 
+# `vector<offset=42, multiplier=3>[3] u;` vector with offset and multiplier
+# 
+
+# ###### Complex vectors
+# 
+# `complex_vector[3] v;`
+# 
+# it's do not support any constraints
+
+# ###### Unit vector
+#  
+# `unit_vector[5] theta;` Is declared to be a unit $5-vector$. Useful to validate unit length.
+# 
+
+# ###### Ordered vector
+# 
+# `ordered[5] c;`  All entries are sorted in ascending order. The vector often employed as cut points in oderder logistic regression models.
+
+# ###### Positive, ordered vector
+# 
+# `positive_ordered[5] d;`  Vector with positive real values and sorted ascending.
+
+# ###### Row vectors
+# 
+# `row_vector[1093] u;` It's a 1093-dimensional row vector.
+# 
+# `row_vector<lower=-1, upper=1>[10] u;`
+# 
+# `row_vector<offset=-42, multiplier=3>[3] u;` 
+
+# ###### Complex row Vectors
+# 
+# `complex_row_vector[12] v;` 
+# 
+# Not allow constraints.
+
+# ###### Matrices
+# 
+# `matrix[M, N] A;` Where $M$ and $N$ are integer type.
+# 
+# `matrix<upper=0>[3, 4] B;` Matrix with positive values.
+# 
+# `matrix<offset=3, multiplier=2>[4, 3] C;` Matrix with offset and multiplier
+# 
+# `matrix<multiplier=2>[4, 3] C;` Matrix with just multiplier.
+
+# ###### Assigning to rows of matrix
+# 
+# `matrix[M, N] a;`
+# 
+# `row_vector[N] b;`
+# 
+# ...
+# 
+# `a[1] = b;`
+# 
+# Copies the values row vector `b` to `a[1]`, where `a[1]` is the first row of matrix `a`.
+
+# ##### Covariance matrices
+# 
+# `cov_matrix[k] Omega;` It's a $k \times k$ covariance matrix, symmetric and positive definite.
+
+# ###### Correlation matrices
+# 
+# `corr_matrix[3] Sigma;` symmetric, positive definite has entries between $-1$ and $1$ and has a unit diagonal.
+
+# ###### Cholesky factor of covariance matrices
+# 
+# This a better than use covariance matrix directly.
+# 
+# `cholesky_factor_cov[4] L;` Where $\Sigma = LL^{T}$ and $\Sigma$ is a covariance matrix.
+# 
+# 
+
+# ##### Cholesky factors of positive semi-definite matrices
+# 
+# We also use the general declarations to cholesky factor.
+# 
+# `cholesky_factor_cov[M, N];` To be a positive semi-definite matrices of rank M.
+
+# ###### Cholesky factors of correlation matrices
+# 
+# `cholesky_factor_corr[k] L;`  Represent Cholesky factor of a correlation matrix.
+
+# ###### Assigning constrained variables
+# 
+# Constrained are not block to assigning between variable with same primitive data. 
+
+# - `real` with `real<lower=0, upper=1>`
+# 
+# - `matrix[3,3]` with `cov_matrix[3]`
+# 
+# - `matrix[3,3]` with `cholesky_factor_cov[3]`
+
+# ###### Expressions as size declarations
+# 
+# Declare once the data and using in other blocks.
+# 
+# `
+# data {
+#     int<lower=0> N_observed, N_missing;
+# }
+# transformed parameters {
+#     vector[N_observed + N_missing] y;
+# }
+# `
+
+# ###### Accessing vector and matrix elements
+# 
+# `
+# matrix[M, N] m;
+# row_vector[N] v;
+# real x;
+# //...
+# v = m[2];  // m[2] is row_vector
+# x = v[3];  // equivalent to x = m[2][3] or x = m[2, 3]
+# `
+
+# ###### Array index style
+# 
+# The more efficient form to access array is by `m[2, 3]`.
+
+# ###### Size declaration restrictions
+# 
+# `vector[M + N] y;`  Also to matrices and arrays.
+
+# #### 5.6 Array data type
+# 
+# https://mc-stan.org/docs/reference-manual/array-data-types.html
